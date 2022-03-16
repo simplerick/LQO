@@ -1,0 +1,29 @@
+neo_args:
+  logdir: runs/base_neo
+  latency: false
+  n_workers: 4
+  num_complete_plans: 5
+  sync: true
+  total_episodes: 100
+  val_size: 5000
+  encoding: 'neo'
+  selectivity: false
+  device: cuda
+net_args:
+  d_emb: 21 # 22 for selectivity
+  d_model: 250
+  d_model/nhead: 50
+  d_query: 318 #642 for rtos; 318 for neo encoding
+  drop: 0.03
+  fc_nlayers: 2
+  ffdim: 469
+  nhead: 5
+  nlayers: 3
+train_args:
+  iters: 3000
+  batch_size: 100
+  betas:
+  - 0.245543
+  - 0.4175792
+  lr: 0.0005
+  scheduler: 0.776

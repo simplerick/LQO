@@ -1,0 +1,29 @@
+neo_args:
+  logdir: runs/data_driven_tests/rtos
+  n_workers: 2
+  num_complete_plans: 50
+  sync: true
+  total_steps: 800000
+  update_interval: 30000
+  val_size: 5000
+  encoding: 'rtos'
+  latency: False
+  total_episodes: 1000
+net_args:
+  d_emb: 21
+  d_model: 250
+  d_model/nhead: 50
+  d_query: 642 #642 for rtos; 318 for neo encoding; 698 for neo_pgdata
+  drop: 0.03
+  fc_nlayers: 2
+  ffdim: 469
+  nhead: 5
+  nlayers: 3
+train_args:
+  batch_size: 100
+  betas:
+  - 0.245543
+  - 0.4175792
+  iters: 2001
+  lr: 0.0002
+  scheduler: 0.776

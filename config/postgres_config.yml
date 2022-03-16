@@ -1,0 +1,42 @@
+neo_args:
+  logdir: ../runs/postgres/neo_transformer
+  baseline_path: ../runs/postgres/optimizer/unity
+  latency: true
+  reward_weighting: false
+  n_workers: 1
+  num_complete_plans: 100
+  sync: true
+  total_episodes: 100
+  val_size: 5000
+  encoding: 'neo'
+  cost_func: 'log'
+  selectivity: true
+  cardinality: true
+  eps: 0
+  device: cuda:3
+net_args:
+  # pretrained_path: runs/postgres/base_pretrained/state_dict.pt
+  # fit_pretrained_layers:
+  # - fc
+  d_emb: 22
+  # d_emb: 21
+  d_model: 135
+  d_model/nhead: 27
+  d_query: 318
+  # d_query: 709 # neo_pg_data
+  # d_param_pos: 5 # pos_encoding
+  # max_depth: 13 # pos_encoding (max number of tables in query)
+  drop: 0.05
+  fc_nlayers: 1
+  ffdim: 400
+  nhead: 5
+  nlayers: 4
+train_args:
+  epochs : 10
+  min_iters: 1500
+  batch_size: 100
+  betas:
+  - 0.245543
+  - 0.4175792
+  lr: 0.000469
+  scheduler: 0.75062

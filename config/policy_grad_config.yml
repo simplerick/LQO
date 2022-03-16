@@ -1,0 +1,46 @@
+neo_args:
+  logdir: ../runs/postgres/policy_grad/fixed_entropy_coeff=0.1_value_loss=0.5
+  baseline_path: ../runs/postgres/optimizer/unity
+  latency: false
+  n_workers: 1
+  n_update: 32
+  n_train_episodes: 64 # in fact size of training dataset for update
+  save_explored_plans: false
+  num_complete_plans: 1
+  sync: false
+  gamma : 0.9
+  total_episodes: 1000
+  encoding: 'neo'
+  cost_func: 'log'
+  selectivity: false
+  eps: 0
+  device: cuda:3
+net_args:
+  # pretrained_path: runs/postgres/base_pretrained/state_dict.pt
+  # fit_pretrained_layers:
+  # - fc
+  d_emb: 21
+  d_model: 135
+  d_model/nhead: 27
+  d_query: 318
+  d_pairwise: 32
+  d_param_pos: 5 # pos_encoding
+  max_depth: 13 # pos_encoding (max number of tables in query)
+  drop: 0.01
+  fc_nlayers: 2
+  ffdim: 300
+  nhead: 5
+  nlayers: 4
+train_args:
+  epochs : 1
+  min_iters: 1
+  batch_size: 10
+  weight_decay: 0.01
+  clip_grad_norm : 50
+  value_loss_coef: 0.5
+  entropy_loss_coef: 0.1
+  betas:
+  - 0.9
+  - 0.95
+  lr: 0.01
+  scheduler: 0.995

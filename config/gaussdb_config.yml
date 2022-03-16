@@ -1,0 +1,40 @@
+neo_args:
+  logdir : ../runs/gaussdb/neo_transformer
+  baseline_path: ../runs/gaussdb/optimizer/
+  latency: true
+  n_workers: 1
+  num_complete_plans: 1
+  sync: true
+  total_episodes: 100
+  val_size: 5000
+  encoding: 'neo'
+  cost_func: 'log'
+  reward_weighting: false
+  selectivity: false
+  cardinality: false
+  eps: 0
+  device: cuda:3
+net_args:
+  # pretrained_path: runs/postgres/base_pretrained/state_dict.pt
+  # fit_pretrained_layers:
+  # - fc
+  d_emb: 21
+  d_model: 135
+  nhead: 5
+  d_model/nhead: 27
+  d_query: 318
+  d_param_pos: 5 # pos_encoding
+  max_depth: 13 # pos_encoding (max number of tables in query)
+  drop: 0.05
+  fc_nlayers: 1
+  ffdim: 400
+  nlayers: 4
+train_args:
+  epochs : 10
+  min_iters: 1500
+  batch_size: 100
+  betas:
+  - 0.6
+  - 0.9
+  lr: 0.000469
+  scheduler: 0.75062
